@@ -63,7 +63,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.hashLbkl.text = "\(socketVM.transactionQueue[indexPath.row].x.hash)"
         cell.amountLbl.text = "$\(socketVM.transactionQueue[indexPath.row].x.out.first?.value ?? 0)"
-        cell.timeLbl.text = socketVM.getReadableDate(timeStamp: TimeInterval(socketVM.transactionQueue[indexPath.row].x.time))
+        cell.timeLbl.text = socketVM.getReadableDate(timeStamp: socketVM.transactionQueue[indexPath.row].x.time)
         return cell
     }
 }

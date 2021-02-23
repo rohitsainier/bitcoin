@@ -31,6 +31,7 @@ class SocketViewModel{
     func subscribeTransaction(){
         socket.write(string: "{\"op\":\"unconfirmed_sub\"}")
     }
+    //ToDo: we can use any conversion api here to convert amount into dollors but now i just created a dummy func for that purposes
     func convertBtcIntoDollor(value: Int) -> Int{
         return value / 50000
     }
@@ -40,32 +41,13 @@ class SocketViewModel{
         delegate?.didRecievedTransaction()
     }
     
-    func getReadableDate(timeStamp: TimeInterval) -> String? {
-        let date = Date(timeIntervalSince1970: timeStamp)
-        let dateFormatter = DateFormatter()
+    func getReadableDate(timeStamp:Int) -> String{
         
-        if Calendar.current.isDateInTomorrow(date) {
-            return "Tomorrow"
-        } else if Calendar.current.isDateInYesterday(date) {
-            return "Yesterday"
-        } else if dateFallsInCurrentWeek(date: date) {
-            if Calendar.current.isDateInToday(date) {
-                dateFormatter.dateFormat = "h:mm a"
-                return dateFormatter.string(from: date)
-            } else {
-                dateFormatter.dateFormat = "EEEE"
-                return dateFormatter.string(from: date)
-            }
-        } else {
-            dateFormatter.dateFormat = "dd-mm-yyyy hh:mm:ss"
-            return dateFormatter.string(from: date)
-        }
-    }
-    
-    func dateFallsInCurrentWeek(date: Date) -> Bool {
-        let currentWeek = Calendar.current.component(Calendar.Component.weekOfYear, from: Date())
-        let datesWeek = Calendar.current.component(Calendar.Component.weekOfYear, from: date)
-        return (currentWeek == datesWeek)
+        let date = Date(timeIntervalSince1970: Double(timeStamp))
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "dd-MM-yyyy hh:mm:ss"
+        return dateFormatter.string(from: date)
     }
     
 }
@@ -73,13 +55,13 @@ class SocketViewModel{
 extension SocketViewModel:WebSocketDelegate{
     
     func websocketDidConnect(socket: WebSocketClient) {
-        print("Connented")
-        delegate?.connected(msg: "Connented")
+        print("Connected")
+        delegate?.connected(msg: "Connected")
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        print("Disconnented")
-        delegate?.disconnected(msg: "Disconnented")
+        print("DisConnected")
+        delegate?.disconnected(msg: "Disconnected")
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
