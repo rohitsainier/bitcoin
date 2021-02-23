@@ -36,6 +36,9 @@ class ViewController: UIViewController{
         }
     }
     
+    deinit {
+        socketVM.delegate = nil
+    }
 }
 
 //MARK: - TableView DataSource and Delegate Methods
