@@ -42,7 +42,6 @@ class SocketViewModel{
     }
     
     func getReadableDate(timeStamp:Int) -> String{
-        
         let date = Date(timeIntervalSince1970: Double(timeStamp))
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
