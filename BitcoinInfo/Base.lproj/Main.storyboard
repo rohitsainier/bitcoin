@@ -23,16 +23,41 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wAv-xC-H7p">
+                                <rect key="frame" x="0.0" y="93" width="414" height="719"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="HJr-w5-URF"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Vpd-9F-cZy"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77e-3g-EFf">
+                                <rect key="frame" x="175" y="826" width="64" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <state key="normal" title="CLEAR">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cleatBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bpp-9c-sj9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="wAv-xC-H7p" firstAttribute="top" secondItem="DbJ-9F-cwo" secondAttribute="bottom" constant="20" id="0cU-bC-3Pm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wAv-xC-H7p" secondAttribute="bottom" constant="50" id="4ON-en-p3L"/>
                             <constraint firstItem="DbJ-9F-cwo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="6by-vP-76O"/>
+                            <constraint firstItem="wAv-xC-H7p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cT2-I1-fTw"/>
+                            <constraint firstItem="77e-3g-EFf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cv4-CU-8AG"/>
+                            <constraint firstItem="77e-3g-EFf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="drS-mF-gVV"/>
                             <constraint firstItem="DbJ-9F-cwo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iKx-4W-gvN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wAv-xC-H7p" secondAttribute="trailing" id="vsN-4J-Z6Z"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="connectionLbl" destination="DbJ-9F-cwo" id="lT9-Dn-RbU"/>
+                        <outlet property="tableView" destination="wAv-xC-H7p" id="mai-xD-8ge"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
